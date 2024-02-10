@@ -16,9 +16,9 @@ if "preliminary_form_submitted" not in st.session_state:
 
 if not st.session_state["preliminary_form_submitted"]:
     with st.form(key='preliminary_form'):
-        st.session_state["budget"] = st.text_input('你的旅游费用预算是')
-        st.session_state["number_of_people"] = st.text_input('出行人数')
-        st.session_state["number_of_days"] = st.text_input('旅游天数')
+        st.session_state["budget"] = st.text_input('你的旅游费用预算是（元）')
+        st.session_state["number_of_people"] = st.text_input('出行人数（人）')
+        st.session_state["number_of_days"] = st.text_input('旅游天数（天）')
         if st.form_submit_button(label='提交'):
             st.session_state["preliminary_form_submitted"] = True
 # 问卷封面部分
@@ -51,62 +51,142 @@ if st.session_state["preliminary_form_submitted"]:
         skip_button_placeholder = st.empty()  # 创建一个新的占位符用于放置跳过按钮
 
         if st.session_state["form_selected"] == "form1":
-            if "option1" not in st.session_state:
-                st.session_state["option1"] = ""
-            if "option2" not in st.session_state:
-                st.session_state["option2"] = ""
-            if "option3" not in st.session_state:
-                st.session_state["option3"] = ""
-            if "option4" not in st.session_state:
-                st.session_state["option4"] = ""
-            if "option5" not in st.session_state:
-                st.session_state["option5"] = ""
+            if "aoption1" not in st.session_state:
+                st.session_state["aoption1"] = ""
+            if "aoption2" not in st.session_state:
+                st.session_state["aoption2"] = ""
+            if "aoption3" not in st.session_state:
+                st.session_state["aoption3"] = ""
+            if "aoption4" not in st.session_state:
+                st.session_state["aoption4"] = ""
+            if "aption5" not in st.session_state:
+                st.session_state["aoption5"] = ""
 
             option1 = st.radio(
                 '您会选择以下哪种小众场景？',
                 ('美食刺客，越刺越勇', '本地人都不知道的“世外桃源”', '打卡绝美拍照点，争做网红创始人',
                  '其他场景(请填写)')
             )
-            st.session_state["option1"] = option1
-            if st.session_state["option1"] == '其他场景(请填写)':
-                st.session_state["option1"] = st.text_input('请填写你的答案', key='11')
+            st.session_state["aoption1"] = aoption1
+            if st.session_state["aoption1"] == '其他场景(请填写)':
+                st.session_state["aoption1"] = st.text_input('请填写你的答案', key='aoption1')
 
-            option2 = st.radio(
+            aoption2 = st.radio(
                 '您的旅游必备单品是？',
                 ('相机', '墨镜', '手电筒', '各种速食食品', '其他(请填写)')
             )
-            st.session_state["option2"] = option2
-            if st.session_state["option2"] == '其他(请填写)':
-                st.session_state["option2"] = st.text_input('请填写你的答案', key='option2_key')
+            st.session_state["aoption2"] = aoption2
+            if st.session_state["aoption2"] == '其他(请填写)':
+                st.session_state["aoption2"] = st.text_input('请填写你的答案', key='aoption2_key')
 
             option3 = st.radio(
                 '抵达目的地后，以下哪种情景会影响您的心情？',
                 ('景点没看头', '找不到好吃的餐馆', '手机突然没电', '其他(请填写)')
             )
-            if st.session_state["option3"] == '其他(请填写)':
-                st.session_state["option3"] = st.text_input('请填写你的答案', key='option3_key')
-            else:
-                st.session_state["option3"] = option3
+            st.session_state["aoption3"] = aoption3
+            if st.session_state["aoption3"] == '其他(请填写)':
+                st.session_state["aoption3"] = st.text_input('请填写你的答案', key='aoption3_key')
 
-            option4 = st.radio(
+            aoption4 = st.radio(
                 '对您来说，本次旅途的目的是',
                 ('逃离城市，探索自然', '促进感情，交换真心', '探索未知，自由惬意', '其他(请填写)')
             )
-            st.session_state["option4"] = option4
+            st.session_state["aoption4"] = aoption4
 
-            if st.session_state["option4"] == '其他(请填写)':
+            if st.session_state["aoption4"] == '其他(请填写)':
+                st.session_state["aoption4"] = st.text_input('请填写你的答案', key='aoption4_key')
 
-                st.session_state["option4"] = st.text_input('请填写你的答案', key='14')
-            else:
-                st.session_state["option4"] = option4
-            option5 = st.radio(
+            aoption5 = st.radio(
                 '旅途结束以后，您会选择',
                 ('朋友圈分享本次旅程', '记录旅行VLOG', '编撰《XX的旅游日志》', '其他(请填写)')
             )
-            if st.session_state["option5"] == '其他(请填写)':
-                st.session_state["option5"] = st.text_input('请填写你的答案', key='option5_key')
-            else:
-                st.session_state["option5"] = option5
+            st.session_state["aoption5"] = aoption5
+            if st.session_state["aoption5"] == '其他(请填写)':
+                st.session_state["aoption5"] = st.text_input('请填写你的答案', key='1option5_key')
+
+        elif st.session_state["form_selected"] == "form2":
+            if "boption1" not in st.session_state:
+                st.session_state["boption1"] = ""
+            if "boption2" not in st.session_state:
+                st.session_state["boption2"] = ""
+            if "boption3" not in st.session_state:
+                st.session_state["boption3"] = ""
+            if "boption4" not in st.session_state:
+                st.session_state["boption4"] = ""
+            boption1 = st.radio(
+                '请您选择降落位置',
+                ('五岳', '青藏高原', '秦岭淮河一线', '甘肃沙漠', '岛屿孤勇者', '其他(请填写)')
+            )
+            st.session_state["boption1"] = boption1
+            if st.session_state["boption1"] == '其他(请填写)':
+                st.session_state["boption1"] = st.text_input('请填写你的答案', key='boption1_key')
+
+            boption2 = st.radio(
+                '请选择您的坐骑',
+                ('越野车', '缆车', '观光大巴', '徒步最香', '其他(请填写)')
+            )
+            st.session_state["boption2"] = boption2
+            if st.session_state["boption2"] == '其他(请填写)':
+                st.session_state["boption2"] = st.text_input('请填写你的答案', key='boption2_key')
+
+            boption3 = st.radio(
+                '请选择挑战项目',
+                ('极限运动', '山间野趣', '洞穴奇案', '勇闯“孤岛"', '其他(请填写)')
+            )
+            st.session_state["boption3"] = boption3
+            if st.session_state["boption3"] == '其他(请填写)':
+                st.session_state["boption3"] = st.text_input('请填写你的答案', key='boption3_key')
+
+            boption4 = st.radio(
+                '请选择您的驿站',
+                ('帐篷', '房车', '青年旅社', '酒店', '其他(请填写)')
+            )
+            st.session_state["boption4"] = boption4
+            if st.session_state["boption4"] == '其他(请填写)':
+                st.session_state["boption4"] = st.text_input('请填写你的答案', key='boption4_key')
+
+
+        else:
+            if "coption1" not in st.session_state:
+                st.session_state["coption1"] = ""
+            if "coption2" not in st.session_state:
+                st.session_state["coption2"] = ""
+            if "coption3" not in st.session_state:
+                st.session_state["coption3"] = ""
+            if "coption4" not in st.session_state:
+                st.session_state["coption4"] = ""
+            coption1 = st.radio(
+                '您偏好的躺平场景',
+                ('观光度假村', '日落海滩', '主题民宿大床房', '农家乐', '其他(请填写)')
+            )
+            st.session_state["coption1"] = coption1
+            if st.session_state["coption1"] == '其他(请填写)':
+                st.session_state["coption1"] = st.text_input('请填写你的答案', key='coption1_key')
+
+            coption2 = st.radio(
+                '您偏好的项目',
+                ('足浴按摩', '室内剧本杀', '美容美发', '寺庙祈福', '采茶、摘果子', '其他(请填写)')
+            )
+            st.session_state["coption2"] = coption2
+            if st.session_state["coption2"] == '其他(请填写)':
+                st.session_state["coption2"] = st.text_input('请填写你的答案', key='coption2_key')
+
+            coption3 = st.radio(
+                    '您偏好的酒店/度假村类型',
+                    ('山间小舍', '最炫民族风', '网红民宿', '海景房', '其他(请填写)')
+                )
+            st.session_state["coption3"] = coption3
+            if st.session_state["coption3"] == '其他(请填写)':
+                st.session_state["coption3"] = st.text_input('请填写你的答案', key='coption3_key')
+
+            coption4 = st.radio(
+                        '如果让您来纪念本次旅途，您会选择',
+                        ('特产', '各种美食调料包', '深度游，体验当地', '主题游，专注兴趣')
+                    )
+            st.session_state["coption4"] = coption4
+            if st.session_state["coption4"] == '其他(请填写)':
+                st.session_state["coption4"] = st.text_input('请填写你的答案', key='coption4_key')
+
         if "form_submitted" not in st.session_state or not st.session_state["form_submitted"]:
             with form_placeholder.form(key='my_form'):
                     submit_button = st.form_submit_button(label='提交')
@@ -122,18 +202,18 @@ if st.session_state["preliminary_form_submitted"]:
                 full_response = ""
                 if submit_button:
                     status_message = st.empty()  # 创建状态消息的占位符
-                    status_message.write("正在为您生成旅游计划...")  # 显示状态消息
+
                     full_response = ""
                     if st.session_state["form_selected"] == "form1":
-                        input_text = f"请根据我给出的提示给我推荐一个适合我的旅游的地方，并且给我制定详细的计划：我的旅游预算是{st.session_state['budget']}，出行人数是{st.session_state['number_of_people']}，旅游天数是{st.session_state['number_of_days']}，在旅游时我更喜欢{st.session_state['option1']}，我的旅游必备单品是{st.session_state['option2']}，到达目的地之后我的心情会因为{st.session_state['option3']}而变差，我的旅游目的主要是{st.session_state['option4']}，在结束我的旅途后我喜欢 {st.session_state['option5']}"
-                        st.write(input_text)  # 显示用户的输入
+                        input_text = f"请根据我给出的提示给我推荐一个适合我的旅游的地方，并且给我制定详细的计划：我的旅游预算是{st.session_state['budget']}元，出行人数是{st.session_state['number_of_people']}人，旅游天数是{st.session_state['number_of_days']}天，在旅游时我更喜欢{st.session_state['aoption1']}，我的旅游必备单品是{st.session_state['aoption2']}，到达目的地之后我的心情会因为{st.session_state['aoption3']}而变差，我的旅游目的主要是{st.session_state['aoption4']}，在结束我的旅途后我喜欢 {st.session_state['aoption5']}"
+
                     elif st.session_state["form_selected"] == "form2":
-                        input_text = f"我选择了：我希望在{option1}之类的地方旅游，并且我喜欢以{option2}的方式观光，我喜欢{option3}之类的旅游项目，我希望我晚上在{option4}休息。"
+                        input_text = f"请根据我给出的提示给我推荐一个适合我的旅游的地方，并且给我制定详细的计划：我的旅游预算是{st.session_state['budget']}元，出行人数是{st.session_state['number_of_people']}人，旅游天数是{st.session_state['number_of_days']}天，我希望在{st.session_state['boption1']}之类的地方旅游，并且我喜欢以{st.session_state['boption2']}的方式观光，我喜欢{st.session_state['boption3']}之类的旅游项目，我希望我晚上在{st.session_state['boption4']}休息。"
                     else:
-                        input_text = f"我选择了：我希望我旅游的时候可以躺在 {option1}，我喜欢{option2}之类的旅游项目，我希望我晚上在{option3}休息，通常我喜欢以{option4}的方式纪念我的旅途"
+                        input_text = f"请根据我给出的提示给我推荐一个适合我的旅游的地方，并且给我制定详细的计划：我的旅游预算是{st.session_state['budget']}元，出行人数是{st.session_state['number_of_people']}人，旅游天数是{st.session_state['number_of_days']}天，我希望我旅游的时候可以躺在 {st.session_state['coption1']}，我喜欢{st.session_state['coption2']}之类的旅游项目，我希望我晚上在{st.session_state['coption3']}休息，通常我喜欢以{st.session_state['coption4']}的方式纪念我的旅途"
                 elif skip_button:
                     # 当点击"填问卷太麻烦？一键开启盲盒旅行"按钮时，使用预备问卷的结果
-                    input_text = f"给我安排一个详细的旅游计划：我的预算是 {st.session_state['budget']}，一共有{st.session_state['number_of_people']}人，打算玩{st.session_state['number_of_days']}天"
+                    input_text = f"给我安排一个详细的旅游计划：我的预算是 {st.session_state['budget']}元，一共有{st.session_state['number_of_people']}人，打算玩{st.session_state['number_of_days']}天"
                 for response in client.chat.completions.create(
                         model=st.session_state["openai_model"],
                         messages=[{"role": "user", "content": input_text}],
