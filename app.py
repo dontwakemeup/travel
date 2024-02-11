@@ -62,7 +62,7 @@ if st.session_state["preliminary_form_submitted"]:
             if "aption5" not in st.session_state:
                 st.session_state["aoption5"] = ""
 
-            option1 = st.radio(
+            aoption1 = st.radio(
                 '您会选择以下哪种小众场景？',
                 ('美食刺客，越刺越勇', '本地人都不知道的“世外桃源”', '打卡绝美拍照点，争做网红创始人',
                  '其他场景(请填写)')
@@ -79,7 +79,7 @@ if st.session_state["preliminary_form_submitted"]:
             if st.session_state["aoption2"] == '其他(请填写)':
                 st.session_state["aoption2"] = st.text_input('请填写你的答案', key='aoption2_key')
 
-            option3 = st.radio(
+            aoption3 = st.radio(
                 '抵达目的地后，以下哪种情景会影响您的心情？',
                 ('景点没看头', '找不到好吃的餐馆', '手机突然没电', '其他(请填写)')
             )
