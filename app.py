@@ -16,11 +16,13 @@ if "preliminary_form_submitted" not in st.session_state:
 
 if not st.session_state["preliminary_form_submitted"]:
     with st.form(key='preliminary_form'):
+        title = st.markdown("# 趣人格H5定制旅游测评")
         st.session_state["budget"] = st.text_input('你的旅游费用预算是（元）')
         st.session_state["number_of_people"] = st.text_input('出行人数（人）')
         st.session_state["number_of_days"] = st.text_input('旅游天数（天）')
         if st.form_submit_button(label='提交'):
             st.session_state["preliminary_form_submitted"] = True
+            title.empty()
 # 问卷封面部分
 if st.session_state["preliminary_form_submitted"]:
     if "form_selected" not in st.session_state:
