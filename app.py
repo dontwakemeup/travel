@@ -31,15 +31,15 @@ if st.session_state["preliminary_form_submitted"]:
     if st.session_state["form_selected"] is None:
         cols = cover_placeholder.columns(3)  # 将问卷封面按钮放在新的占位符中
         with cols[0]:
-            if st.button("问卷甲"):
+            if st.button("一身反骨的“景点刺客”"):
                 st.session_state["form_selected"] = "form1"
                 st.session_state["chat_started"] = True
         with cols[1]:
-            if st.button("问卷乙"):
+            if st.button("用脚步丈量大地的“背包客”"):
                 st.session_state["form_selected"] = "form2"
                 st.session_state["chat_started"] = True
         with cols[2]:
-            if st.button("问卷丙"):
+            if st.button("只想躺平的佛系现代人"):
                 st.session_state["form_selected"] = "form3"
                 st.session_state["chat_started"] = True
         if st.session_state["form_selected"] is not None:
